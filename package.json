@@ -1,7 +1,7 @@
 {
   "name": "wiz-local",
   "version": "1.0.2",
-  "description": "",
+  "description": "UltraLight library to control your WIZ local devices",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
     "local",
     "wiz-local"
   ],
-  "author": "",
+  "author": "Gonzalo Reyna",
   "license": "ISC",
   "dependencies": {
     "dgram": "^1.0.1",
