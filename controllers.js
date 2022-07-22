@@ -60,7 +60,7 @@ async function getStateW(ip) {
         );
         server.on("message", async function (message) {
             let data = await JSON.parse(message)
-            let state = await data.result.state
+            let state = await data.result
             server.close()
             resolve(state)
         }
