@@ -28,6 +28,7 @@ async function discoveryW() {
 
 async function toggleW(ip) {
     const server = dgram.createSocket("udp4");
+    const pilot = JSON.stringify({ "id": 1, "method": "getPilot", "params": {} });
     server.send(pilot, port, ip, async function (err) {
         if (err) throw err;
     });

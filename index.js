@@ -29,7 +29,8 @@ async function dimm(ip, dimm) {
     await dimmW(ip, dimm);
     return true
 }
-
+ 
+toggle("192.168.0.146")
 
 module.exports = {
     discovery,
