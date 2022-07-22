@@ -49,23 +49,29 @@ async function temperatureW(ip, temp) {
     );
 }
 
-async function getStateW(ip) {
+async function getStateW(ip) {    
     const server = dgram.createSocket("udp4");
-    const pilot = JSON.stringify({ "id": 1, "method": "getState", "params": {} });
-    server.send(pilot, port, ip, async function (err) {
-        if (err) return err;
+    const pilot = JSON.stringify({ "id": 1, "method": "getPilot", "params": {} });
+    let promise = new Promise((resolve, reject) => {
+        server.send(pilot, port, ip, async function (err) {
+            if (err) return err;
+            return true;
+        }
+        );
+        server.on("message", async function (message) {
+            let data = await JSON.parse(message)
+            let state = await data.result.state
+            server.close()
+            resolve(state)
+        }
+        );
     }
-    );
-    server.setMaxListeners(20);
-    server.on("message", async function (message) {
-        let data = await JSON.parse(message)
-        let state = await data.result
-        server.close()
-        return state
-    }
-    );
+    )
+    return promise
 }
 
+
+    
 async function rgbW(ip, r, g, b) {
     const server = dgram.createSocket("udp4");
     const pilot = JSON.stringify({ "id": 1, "method": "setPilot", "params": { "r": r, "g": g, "b": b } });

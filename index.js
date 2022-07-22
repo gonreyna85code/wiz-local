@@ -1,7 +1,7 @@
 const { discoveryW, toggleW, temperatureW, getStateW, rgbW, dimmW } = require("./controllers.js");
 
 async function discovery() {
-    let list = await discoveryW();    
+    let list = await discoveryW();
     return list;
 }
 
@@ -16,8 +16,8 @@ async function temperature(ip, temp) {
 }
 
 async function getState(ip) {
-    let state = await getStateW(ip);
-    return state;
+    let data = await getStateW(ip);    
+    return data;
 }
 
 async function rgb(ip, r, g, b) {
@@ -28,8 +28,7 @@ async function rgb(ip, r, g, b) {
 async function dimm(ip, dimm) {
     await dimmW(ip, dimm);
     return true
-}    
-
+}
 
 
 module.exports = {
