@@ -35,7 +35,7 @@ async function toggleW(ip) {
     server.on("message", async function (message) {
         let data = await JSON.parse(message)
         let state = await data.result.state
-        state ? off(ip) : on(ip)
+        state ? server.send(off, port, ip) : server.send(on, port, ip)
         server.close()
     });
 }
