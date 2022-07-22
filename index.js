@@ -5,8 +5,8 @@ async function discovery() {
     return list;
 }
 
-async function toggle(ip) {
-    await toggleW(ip);
+async function toggle(ip, state) {
+    await toggleW(ip, state);
     return true;
 }
 
@@ -28,9 +28,7 @@ async function rgb(ip, r, g, b) {
 async function dimm(ip, dimm) {
     await dimmW(ip, dimm);
     return true
-}
- 
-toggle("192.168.0.146")
+} 
 
 module.exports = {
     discovery,

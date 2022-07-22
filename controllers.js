@@ -4,8 +4,8 @@ const dgram = require('dgram');
 const { Device } = require("./device");
 const port = 38899;
 
-const on = JSON.stringify({ "id": 1, "method": "setState", "params": { "state": true } });
-const off = JSON.stringify({ "id": 1, "method": "setState", "params": { "state": false } });
+const on = JSON.stringify({"id":1,"method":"setState","params":{"state":true}});
+const off = JSON.stringify({"id":1,"method":"setState","params":{"state":false}});
 
 async function discoveryW() {
     const vendors = ["wiz"];
@@ -26,20 +26,17 @@ async function discoveryW() {
     return totalDevices
 }
 
-async function toggleW(ip) {
-    const server = dgram.createSocket("udp4");
-    const pilot = JSON.stringify({ "id": 1, "method": "getPilot", "params": {} });
+async function toggleW(ip, state) {
+    const server = dgram.createSocket("udp4");   
+    const pilot = JSON.stringify({"id":1,"method":"setState","params":{"state":state}});
     server.send(pilot, port, ip, async function (err) {
-        if (err) throw err;
-    });
-    server.on("message", async function (message) {
-        let data = await JSON.parse(message)
-        let state = await data.result.state
-        state ? server.send(off, port, ip) : server.send(on, port, ip)
-        server.close()
-    });
+        if (err) return err;
+        server.close();
+        return true;
+    }
+    );
 }
-
+    
 async function temperatureW(ip, temp) {
     const server = dgram.createSocket("udp4");
     const pilot = JSON.stringify({ "id": 1, "method": "setPilot", "params": { "temp": temp } });
@@ -48,6 +45,7 @@ async function temperatureW(ip, temp) {
         return true;
     }
     );
+    server.close();
 }
 
 async function getStateW(ip) {    
@@ -80,6 +78,7 @@ async function rgbW(ip, r, g, b) {
         if (err) return err;
     }
     );
+    server.close();
     return true;
 }
 
@@ -90,6 +89,7 @@ async function dimmW(ip, dimm) {
         if (err) return err;
     }
     );
+    server.close();
     return true;
 }
 
