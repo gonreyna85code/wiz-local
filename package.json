@@ -1,6 +1,6 @@
 {
   "name": "wiz-local",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "UltraLight library to control your WIZ local devices",
   "main": "index.js",
   "scripts": {
