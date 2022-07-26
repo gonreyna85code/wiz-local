@@ -16,6 +16,8 @@ npm install wiz-local
 
 ### Example
 
+```javascript
+
 const {discovery, toggle, temperature, getState, rgb, dimm} = require('wiz-local');
 
 // Find Wiz local devices.
@@ -50,20 +52,6 @@ async () => {
     */
 }
 
-// Toggle a device.
-async () => {
-  const devices = await discovery();
-  const device = devices[0];
-  await toggle(device, true); // true to turn on and false to turn off.(Use boolean, not string)
-}
-
-// Change the light temperature of a device.
-async () => {
-  const devices = await discovery();
-  const device = devices[0];
-  await temperature(device, 2700); // 2200 to 6500 is the temperature in Kelvin.(Use integer, not string)
-}
-
 // Get the state of a device.
 async () => {
   const devices = await discovery();
@@ -83,6 +71,20 @@ async () => {
     */
 }
 
+// Toggle a device.
+async () => {
+  const devices = await discovery();
+  const device = devices[0];
+  await toggle(device, true); // true to turn on and false to turn off.(Use boolean, not string)
+}
+
+// Change the light temperature of a device.
+async () => {
+  const devices = await discovery();
+  const device = devices[0];
+  await temperature(device, 2700); // 2200 to 6500 is the temperature in Kelvin.(Use integer, not string)
+}
+
 // Change the color of a device.
 async () => {
   const devices = await discovery();
@@ -97,6 +99,5 @@ async () => {
   await dimm(device, 100); // 0 to 100 is the intensity value.(Use integer, not string)
 }
 
-
-
-
+    
+    ```
