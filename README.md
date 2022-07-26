@@ -2,8 +2,6 @@
 
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-[![Watch on GitHub][github-watch-badge]][github-watch]
-[![Star on GitHub][github-star-badge]][github-star]
 
 Find Wiz devices and control them with the Wiz Local app.
 Each method will return a Promise that resolves with the result of the operation.
@@ -21,7 +19,7 @@ npm install wiz-local
 const {discovery, toggle, temperature, getState, rgb, dimm} = require('wiz-local');
 
 // Find Wiz local devices.
-(async () => {
+async () => {
   const devices = await discovery();
   console.log(devices);
   devices /*
@@ -50,24 +48,24 @@ const {discovery, toggle, temperature, getState, rgb, dimm} = require('wiz-local
   },
   ]
     */
-})();
+}
 
 // Toggle a device.
-(async () => {
+async () => {
   const devices = await discovery();
   const device = devices[0];
   await toggle(device, true); // true to turn on and false to turn off.(Use boolean, not string)
-})();
+}
 
 // Change the light temperature of a device.
-(async () => {
+async () => {
   const devices = await discovery();
   const device = devices[0];
   await temperature(device, 2700); // 2200 to 6500 is the temperature in Kelvin.(Use integer, not string)
-})();
+}
 
 // Get the state of a device.
-(async () => {
+async () => {
   const devices = await discovery();
   const device = devices[0];
   const state = await getState(device);
@@ -83,36 +81,22 @@ const {discovery, toggle, temperature, getState, rgb, dimm} = require('wiz-local
       "dimming": 100
     }
     */
-})();
+}
 
 // Change the color of a device.
-(async () => {
+async () => {
   const devices = await discovery();
   const device = devices[0];
   await rgb(device, 255, 255, 255); // 0 to 255 is the color value.(Use integer, not string)
-})();
+}
 
 // Change the intensity of a device.
-(async () => {
+async () => {
   const devices = await discovery();
   const device = devices[0];
   await dimm(device, 100); // 0 to 100 is the intensity value.(Use integer, not string)
-})();
+}
 
 
-[github-watch]: 
-    https://img.shields.io/badge/wiz-local-wiz-local-brightgreen.svg?style=flat-square
-    "wiz-local"
-[github-star]:
-    https://img.shields.io/badge/wiz-local-wiz-local-brightgreen.svg?style=flat-square
-    "wiz-local"
-[github-watch-badge]:
-    https://img.shields.io/badge/wiz-local-wiz-local-brightgreen.svg?style=flat-square
-    "wiz-local"
-[github-star-badge]:
-    https://img.shields.io/badge/wiz-local-wiz-local-brightgreen.svg?style=flat-square
-    "wiz-local"
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-[![Watch on GitHub][github-watch-badge]][github-watch]
-[![Star on GitHub][github-star-badge]][github-star]
+
 
